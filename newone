@@ -1,1 +1,90 @@
-nothingfsd
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors // Import the Scanner class to read text files
+
+import java.util.*;
+public class BSTSTRING{
+    public class node{
+        String data;
+        int count;
+        node lst;
+        node rst;
+            node(String info){
+                data = info;
+                count=0;
+                lst = null;
+                rst= null;
+            }
+    }
+public  node  insert(node root,String element){
+    if(root==null){
+      root = new node(element);
+        root.data=element;
+        return root;
+    }
+    else if((root.data).compareTo(element) < element.compareTo(root.data))
+    {
+        root.lst=insert(root.lst,element);
+        
+    }
+    else if((root.data).compareTo(element) > element.compareTo(root.data)){
+        root.rst=insert(root.rst,element);
+    }
+    else{
+        root.data.
+    }
+    return root;
+
+}
+public void inorder(node root){
+       if(root==null){
+           return;
+       }
+       inorder(root.lst);
+       System.out.print(root.data+" ,  ");
+       inorder(root.rst);
+}
+public node search(node root,String element){
+     node current=root;
+      boolean found=false;
+      while(!found && current!=null){
+          
+          if(current.data.equalsIgnoreCase(element)){
+              
+              found=true;
+          }
+          else if(root.data.compareTo(element) < element.compareTo(root.data)){
+              current=current.lst;
+          }
+          else if(root.data.compareTo(element) > element.compareTo(root.data)){
+              current=current.rst;
+          }
+         
+      }
+      if(found){
+          System.out.println("element found"+current.data);
+      }
+      else{
+          System.out.println("element not found");
+      }
+     return current; 
+      
+
+}
+public static void main(String args[]){
+    BSTSTRING  tree = new BSTSTRING();
+    node root=null;
+    Scanner sc = new Scanner(System.in);
+    String arr[]={"chinnodu","peddhodu","musaldhi","sita","gita","rellangi mawa"};
+    int size=arr.length;
+    for(int i=0;i<size;i++){
+       root=tree.insert(root,arr[i]);
+    }
+    System.out.println();
+    
+    tree.inorder(root);
+    System.out.println("enter search key:");
+    String key = sc.next();
+    tree.search(root,key);
+    
+    }
+}
